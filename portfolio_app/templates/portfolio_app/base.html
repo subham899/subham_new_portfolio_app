@@ -1,0 +1,17 @@
+{% extends 'portfolio_app/home.html' %}
+{% block content %}
+ <h1>Subham's portfolio app</h1>
+{% load static %}
+
+<img src="{% static 'portfolio_app/sportfolio.jpg' %}" height="800" width="450" >
+
+
+{%for x in projects%}
+ <h2>{{x.title}}</h2>
+ <p>{{x.content}}</p>
+<img src=" {{x.img.url}}" height="80" width="80">
+{%if x.url %}
+<br> <a href="{{x.url}}">link</a>
+ {%endif%}
+{%endfor%}
+{% endblock %}
