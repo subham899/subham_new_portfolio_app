@@ -2,16 +2,38 @@
 {% block content %}
  <h1>Subham's portfolio app</h1>
 {% load static %}
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+    <img src="{% static 'portfolio_app/sportfolio.jpg' %}" class="img-fluid">
+  </div>
+</div>
 
-<img src="{% static 'portfolio_app/sportfolio.jpg' %}" height="800" width="450" >
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometext" class="font-weight-bold">Subham Basu is Commander-in-Junior at comdjxcode and lives in Hridaypur 😊</h1>
+  </div>
+</div>
 
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+<div class="row">
+  {% for x in projects %}
+  <div class="col-lg-4 col-md-6">
 
-{%for x in projects%}
- <h2>{{x.title}}</h2>
- <p>{{x.content}}</p>
-<img src=" {{x.img.url}}" height="80" width="80">
-{%if x.url %}
-<br> <a href="{{x.url}}">link</a>
- {%endif%}
-{%endfor%}
+    {% if x.url %}
+    <a href="{{ x.url }}">
+      <img src="{{ x.img.url }}" class="img-fluid mb-2">
+    </a>
+    {% else %}
+
+    <img src="{{ x.img.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3>{{ x.title }}</h3>
+    <p>{{ x.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
 {% endblock %}
+
